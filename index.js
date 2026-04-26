@@ -19,8 +19,8 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5000',
     'http://localhost:3000',
-    'https://event-managment-rho.vercel.app',
-    'https://event-managment-sgg2.vercel.app',
+    'https://event-management-frontend-delta-five.vercel.app',
+    'https://event-management-ebon-phi.vercel.app',
 ]
 if (process.env.ALLOWED_ORIGINS) {
     allowedOrigins.push(...process.env.ALLOWED_ORIGINS.split(','))
@@ -29,8 +29,12 @@ if (process.env.ALLOWED_ORIGINS) {
 app.use('*', cors({
     origin: allowedOrigins,
     credentials: true,
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Cookie'],
 }))
 
+// Handle OPTIONS preflight for auth routes
+app.options('/api/auth/*', (c) => c.text('', 204))
 app.on(['GET', 'POST'], '/api/auth/*', (c) => auth.handler(c.req.raw))
 
 app.use('*', async (c, next) => {

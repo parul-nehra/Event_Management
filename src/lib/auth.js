@@ -7,7 +7,7 @@ export const auth = betterAuth({
         provider: "postgresql",
     }),
     basePath: "/api/auth",
-    baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+    baseURL: process.env.BETTER_AUTH_URL || "https://event-management-ebon-phi.vercel.app",
     emailAndPassword: {
         enabled: true,
         requireEmailVerification: false,
@@ -25,8 +25,8 @@ export const auth = betterAuth({
         "http://localhost:5173",
         "http://localhost:5000",
         "http://localhost:3000",
-        "https://event-managment-rho.vercel.app",
-        "https://event-managment-sgg2.vercel.app",
+        "https://event-management-frontend-delta-five.vercel.app",
+        "https://event-management-ebon-phi.vercel.app",
     ],
     session: {
         expiresIn: 60 * 60 * 24 * 7,
